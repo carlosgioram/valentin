@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            background-color: pink;
+            background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGRhYnF4dm00N2d5MHVmN3kwcHBsYmhwYzU4YmN5eDB6NWRwZ3QzayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QAF2NDkBi5OdW/giphy.gif'); /* Fondo animado de corazones */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            color: white;                  
+        }
+        h1 {
+            font-size: 50px;
+            font-weight: bold;        
+        }
+        .gif {
+            width: 250px;
+            height: auto;
+        }
+        .buttons {
+            margin-top: 50px;
+        }
+        button {
+            font-size: 50px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: help;
+            border-radius: 10px;
+        }
+        #yes {
+            background-color: lightgreen;
+        }
+        #no {
+            background-color: lightcoral;
+        }
+        .hidden {
+            display: none;
+        }
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .modal-exit:link, .modal-exit:active, .modal-exit:visited, .modal-exit:hover {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            font-size: 1.7rem;
+            text-decoration: none;
+            color: #F92A2A; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi San Valentín?</h1>
+        <img class="gif" id="gif" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG04enR6M294Y2R1bDRsbDl0eWJwZHQ0cnoyM2QzeWo5azloeTU0ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YDB4EF3U6i6IM/giphy.gif" alt="Herc">
+        <div class="buttons">
+            <button id="yes">Sí</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal hidden">
+        <a href="#" class="modal-exit">x</a>
+        <h2>¡Yei! ❤️</h2>
+        <p>Te invito a una cita este 14 de febrero 🥰</p>
+        <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Gatitos abrazándose">
+    </div>
+
+    <script>
+        let noButton = document.getElementById("no");
+        let yesButton = document.getElementById("yes");
+        let modal = document.getElementById("modal");
+        let gif = document.getElementById("gif");
+        let noSize = 50; // Tamaño inicial del botón No
+        let yesSize = 50; // Tamaño inicial del botón Sí
+
+        noButton.addEventListener("click", function() {
+            if (noSize > 5) {
+                noSize -= 5;
+                yesSize += 10;
+                noButton.style.fontSize = noSize + "px";
+                yesButton.style.fontSize = yesSize + "px";
+            } else {
+                noButton.classList.add("hidden");
+            }
+        });
+
+        yesButton.addEventListener("click", function() {
+            modal.classList.remove("hidden");
+            gif.src = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"; // Cambia el gif
+        });
+
+        let closeModal = document.querySelector(".modal-exit");
+
+        closeModal.addEventListener("click", function(event) {
+            event.preventDefault(); // Evita que el enlace cambie la URL
+            modal.style.display = "none"; // Oculta completamente el modal
+        });
+    </script>
+</body>
+</html>
